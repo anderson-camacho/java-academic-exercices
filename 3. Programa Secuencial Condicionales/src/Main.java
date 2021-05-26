@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 /**
  * <h1>Programacion Secuencial
  * <h1>
@@ -18,7 +19,7 @@ import java.util.Scanner;
  * @see https://github.com/anderson-camacho?tab=repositories
  * @implSpec jdk 11.0,2
  * 
- */
+ */ 
 
 //una clase que debe contener todo lo que este relacionado con el programa
 public class Main {
@@ -45,6 +46,7 @@ public class Main {
 		float sueldoTotalNeto;
 
 		int area;
+		float bonificacion = 0.0F;
 
 		// Operaciones a realizar
 		System.out.println("Programa de calculo de pago empleado\n");
@@ -60,62 +62,61 @@ public class Main {
 		// de sueldo se usa un "(float)" con el fin de cambiar el tipo de resultado que
 		// esta en entero para pasarlo a flotante y poder almacear el resultado en una
 		// variable correcta.
-		
 
-		// El Empleado tambien tendra una bonificaicon depeniendo del area de su cargo:
-		// Servicio Varios, Operaciones, Ventas y Contabilidad. cada uno de las areas
-		// tendra una bonificacion de 40, 20, 10 en porcentaje respectivamaente en ese
-		// orden, ademas de que cualqueir otra area no recibe bonificacion.
-		// es importante decir tambien que solo se recibe bonoificacion si el salario bruto es 
-		// menor a 1200000 para servicios varios, 2000000 para operaciones y contabilidad por debajo de 4500000
+		// El Empleado tambien tendra una bonificacion depeniendo del area de su cargo:
+		// Servicio Varios, Operaciones y VEntas. cada uno de las areas
+		// tendra una bonificacion de 40, 20, 10 en porcentaje respectivamente en ese
+		// orden, ademas de que cualquier otra area no recibe bonificacion.
+		// es importante decir tambien que solo se recibe bonificacion si el salario
+		// bruto es menor a 1200000 para servicios varios, 2000000 para operaciones y
+		// Ventas por debajo de 4500000
 
 		System.out.print("\nEl area a la que pertenece cada empleado es muy importante, ya que "
-				+ "\npermite que tenga una bonifiacion general sobre el valor del sueldo.");
-		System.out.print("\nCodigos de Area: " + "\n1. Servicios Varios." + "\n2. Operaciones." + "\n3. Ventas."
-				+ "\n4. otras areas.");
-		System.out.print("\nIngrese el area a la que pertence: ");
+				+ "\npermite que tenga una bonifiacion general sobre el valor del sueldo." + "\nCodigos de Area: "
+				+ "\n1. Servicios Varios." + "\n2. Operaciones." + "\n3. Ventas." + "\n4. otras areas."
+				+ "\nIngrese el numero del area a la que pertence: ");
 		area = teclado.nextInt();
-		
-		
-
+		sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 		switch (area) {
 		case 1:
-			sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 			if (sueldoBruto < 1200000) {
-				sueldoBruto =(float) sueldoBruto + (sueldoBruto * 0.4f);
+				bonificacion = sueldoBruto * 0.4f;
+				sueldoBruto = (float) sueldoBruto + bonificacion;
 			}
 			break;
 		case 2:
-			sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 			if (sueldoBruto < 2000000) {
-				sueldoBruto =(float) sueldoBruto + (sueldoBruto * 0.2f);
+				bonificacion = sueldoBruto * 0.2f;
+				sueldoBruto = (float) sueldoBruto + bonificacion;
 			}
 			break;
 		case 3:
-			sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 			if (sueldoBruto < 4500000) {
-				sueldoBruto =(float) sueldoBruto + (sueldoBruto * 0.1f);
+				bonificacion = sueldoBruto * 0.1f;
+				sueldoBruto = (float) sueldoBruto + bonificacion;
 			}
 			break;
 		default:
-			sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 			break;
 		}
+		
 
-		// se debe verificar que si el salario de horas comunes es inferior a 900000, no
+		// se debe verificar que si el salario de horas comunes es inferior a 1200000, no
 		// se le haran ninguna deduccion.
 
-		if ((horasTrabajadas * VALOR_HORA_COMUN) < 900000) {
+		if ((horasTrabajadas * VALOR_HORA_COMUN) < 1200000) {
 			// Operacion final para genera el valor del sueldo que ganara el empleado
 			sueldoTotalNeto = sueldoBruto;
 		} else {
 			// Operacion final para genera el valor del sueldo que ganara el empleado
-			sueldoTotalNeto = sueldoBruto + (sueldoBruto * PROCENTAJE_RETENCIONES);
+			sueldoTotalNeto = sueldoBruto - (sueldoBruto * PROCENTAJE_RETENCIONES);
 		}
 
-		// Operacion fianl para genera el valor del sueldo que ganara el empleado
+		// Operacion final para genera el valor del sueldo que ganara el empleado
 
-		System.out.println("\n\nEl sueldo que " + nombreEmpleado + " ha ganado este mes es de $" + sueldoTotalNeto + " Esto con deducciones que fueron $" + sueldoBruto * PROCENTAJE_RETENCIONES);
+		System.out.println("\n\nEl sueldo que " + nombreEmpleado + " ha ganado este mes es de $" + sueldoTotalNeto
+				+ " Esto con deducciones que fueron $" + (sueldoBruto * PROCENTAJE_RETENCIONES) 
+				+" mas la bonificacion que fue de $"+ bonificacion);
 
 	}// fin del metodo main
 

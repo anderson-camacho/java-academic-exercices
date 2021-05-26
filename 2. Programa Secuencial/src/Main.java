@@ -32,7 +32,7 @@ public class Main {
 		// funcionales que se suasran en el ejercicio.
 
 		// Declaracion de Constantes
-		final float PROCENTAJE_RETENCIONES = 0.16F;
+		final float PORCENTAJE_RETENCIONES = 0.16F;
 		final int VALOR_HORA_EXTRA = 10000;
 		final int VALOR_HORA_COMUN = 6000;
 
@@ -53,16 +53,16 @@ public class Main {
 		System.out.print("\nIngrese las horas Extras realizadas este mes: ");
 		horasExtras = teclado.nextInt();
 
-		// operacion inical de multiplicacion y suma para gestionar los valores brutos
+		// operacion inicial de multiplicacion y suma para gestionar los valores brutos
 		// de sueldo se usa un "(float)" con el fin de cambiar el tipo de resultado que
 		// esta en entero para pasarlo a flotante y poder almacear el resultado en una
 		// variable correcta.
 		sueldoBruto = (float) ((horasTrabajadas * VALOR_HORA_COMUN) + (horasExtras * VALOR_HORA_EXTRA));
 
-		// Operacion fianl para genera el valor del sueldo que ganara el empleado
-		sueldoTotalNeto = sueldoBruto + (sueldoBruto * PROCENTAJE_RETENCIONES);
+		// Operacion final para genera el valor del sueldo que ganara el empleado
+		sueldoTotalNeto = sueldoBruto - (sueldoBruto * PORCENTAJE_RETENCIONES);
 
-		System.out.println("\n\nEl sueldo que " + nombreEmpleado + " ha ganado este mes es de " + sueldoTotalNeto);
+		System.out.println("\n\nEl sueldo que " + nombreEmpleado + " ha ganado este mes $" + sueldoTotalNeto);
 
 	}// fin del metodo main
 
