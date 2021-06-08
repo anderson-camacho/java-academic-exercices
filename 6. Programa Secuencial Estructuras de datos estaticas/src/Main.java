@@ -48,14 +48,14 @@ public class Main {
 		int matriz[][] = new int[10][10];
 
 		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz.length; j++) {
+			for (int j = 0; j < matriz[i].length; j++) {
 				matriz[i][j] = numeroAleatorio.nextInt();
 			}
 
 		}
 
 		for (int i = 0; i < matriz.length; i++) {
-			for (int j = 0; j < matriz.length; j++) {
+			for (int j = 0; j < matriz[i].length; j++) {
 				System.out.println("El valor en la posicion (" + i + " , " + j + ") es de: " + matriz[i][j]);
 			}
 
