@@ -45,9 +45,9 @@ public class Menu implements Validations {
 						opcion = this.teclado.nextLine();
 						bandera = true;
 					} else {
-						System.out.println("\nIngresaste una opocion incorrecta.");
 						System.out.print("Selecciona una opcion correcta: ");
 						opcion = this.teclado.nextLine();
+						bandera = false;
 					}
 				} while (!esSoloNumeros(opcion));
 				opcionInt = Integer.parseInt(opcion);
@@ -61,8 +61,11 @@ public class Menu implements Validations {
 				break;
 			case 2:
 				System.out.println("Nombre del director.");
+				directorName();
+				break;
 			case 3:
 				System.out.println("Otras acciones");
+				break;
 			default:
 				mensajeFinal();
 				break;
@@ -72,6 +75,11 @@ public class Menu implements Validations {
 	}
 
 	// class methods
+	private void directorName() {
+		System.out.println("_______________________________________________________________________");
+		System.out.println("\nDirector de grupo: " + this.studentList[0].getNameGroupDirector());
+		System.out.println("_______________________________________________________________________");
+	}
 
 	private void studentListOrderByArray() {
 		System.out.println("Lista de estudiantes generadas por el sistema");
