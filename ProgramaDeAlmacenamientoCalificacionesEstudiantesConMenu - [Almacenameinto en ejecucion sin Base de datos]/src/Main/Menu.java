@@ -1,6 +1,7 @@
 package Main;
 
 import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.Scanner;
 
 import com.sun.jdi.Value;
@@ -18,7 +19,7 @@ public class Menu implements Validations {
 		mensajeAdvertencia();
 		autoFill();
 		menu();
-		mensajeFinal();
+
 	}
 
 	// Menus
@@ -30,29 +31,57 @@ public class Menu implements Validations {
 		System.out.println("MENU");
 		System.out.println("Para usar este programa, deberas ingresar solo las \n"
 				+ "opciones que se indican en el menu que se muestra.");
-		System.out.println(
-				"Opciones:\n 1) Mostrar datos de estudiantes.\n 2) Ver Director de grupo.\n 3) Otros pasos.\n 0) Finalizacion del programa.\n\n");
+
 		do {
 
+			System.out.println(
+					"\n\nOpciones:\n 1) Mostrar datos de estudiantes.\n 2) Ver Director de grupo.\n 3) Otros pasos.\n 0) Finalizacion del programa.\n\n");
 			do {
 
-				if (!bandera) {
-					System.out.print("Selecciona una opcion: ");
-					opcion = this.teclado.nextLine();
-					bandera = true;
-				} else {
-					System.out.println("\nIngresaste una opocion incorrecta.");
-					System.out.print("Selecciona una opcion correcta: ");
-					opcion = this.teclado.nextLine();
-				}
-			} while (!esSoloNumeros(opcion));
-			opcionInt = Integer.parseInt(opcion);
+				do {
 
-		} while (opcionInt < 0 || opcionInt > 3);
+					if (!bandera) {
+						System.out.print("Selecciona una opcion: ");
+						opcion = this.teclado.nextLine();
+						bandera = true;
+					} else {
+						System.out.println("\nIngresaste una opocion incorrecta.");
+						System.out.print("Selecciona una opcion correcta: ");
+						opcion = this.teclado.nextLine();
+					}
+				} while (!esSoloNumeros(opcion));
+				opcionInt = Integer.parseInt(opcion);
+
+			} while (opcionInt < 0 || opcionInt > 3);
+
+			switch (opcionInt) {
+			case 1:
+				System.out.println("Lista de estudiantes.");
+				studentListOrderByArray();
+				break;
+			case 2:
+				System.out.println("Nombre del director.");
+			case 3:
+				System.out.println("Otras acciones");
+			default:
+				mensajeFinal();
+				break;
+			}
+		} while (opcionInt != 0);
 
 	}
 
 	// class methods
+
+	private void studentListOrderByArray() {
+		System.out.println("Lista de estudiantes generadas por el sistema");
+		System.out.println("Nombre\t\t\t\t\tID");
+		for (int i = 0; i < studentList.length; i++) {
+			System.out.println("_______________________________________________________________________");
+			System.out.println(this.studentList[i].getName() + "\n\t\t\t\t\t" + this.studentList[i].getStudentNumber());
+			System.out.println("_______________________________________________________________________");
+		}
+	}
 
 	private void autoFill() {
 		String ns = "";
@@ -65,7 +94,7 @@ public class Menu implements Validations {
 		nsInt = Integer.parseInt(ns);
 		this.studentList = new Student[nsInt];
 		for (int i = 0; i < nsInt; i++) {
-			System.out.println("Estudiante numero: " + i + 1);
+//			System.out.println("Estudiante numero: " + (i + 1));
 			studentList[i] = new Student();
 		}
 

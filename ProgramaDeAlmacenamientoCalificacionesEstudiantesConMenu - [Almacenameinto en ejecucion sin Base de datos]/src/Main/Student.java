@@ -12,14 +12,14 @@ public class Student implements RandomValues {
 	private Random random;
 
 	public Student() {
-		System.out.println("\n Se inicia una automatizacion de llneado de datos para el sistema.");
+//		System.out.println("\n Se inicia una automatizacion de llneado de datos para el sistema.");
 		this.random = new Random();
 		this.name = randomNameGenerator();
 		this.studentNumber = randomNumberIDGenerator();
 		this.codeLevelCourse = String.valueOf(randomLetter()) + String.valueOf(Math.floor(Math.random() * 9));
 		this.nameGroupDirector = randomNameGenerator();
-		metodoPruebaImpresion();
-		System.out.println("\n Se finaliza una automatizacion de llneado de datos para el sistema.");
+//		metodoPruebaImpresion();
+//		System.out.println("\n Se finaliza una automatizacion de llneado de datos para el sistema.");
 
 	}
 
